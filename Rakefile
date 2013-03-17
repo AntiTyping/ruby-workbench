@@ -84,3 +84,19 @@ rule '.o' => ['.c'] do |t|
   puts "Compile"
   sh "cc #{t.source} -o #{t.name}"
 end
+
+# Namespaces
+
+namespace :main do
+  task :build do
+    puts "Build main"
+  end
+end
+
+namespace :sample do
+  task :build do
+    puts "Build sample"
+  end
+end
+
+task :build => ['sample:build', 'main:build']
