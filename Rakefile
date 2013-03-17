@@ -79,3 +79,8 @@ task :name, [:first_name, :last_name] do |t, args|
   args.with_defaults(first_name: "Alic", last_name: "Murphy")
   puts "Your name is #{args.first_name} #{args.last_name}"
 end
+
+rule '.o' => ['.c'] do |t|
+  puts "Compile"
+  sh "cc #{t.source} -o #{t.name}"
+end
